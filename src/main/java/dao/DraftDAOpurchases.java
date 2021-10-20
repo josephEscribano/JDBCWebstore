@@ -3,9 +3,8 @@ package dao;
 
 import configuration.ConfigProperties;
 import javafx.scene.control.Alert;
-import model.Purchase;
 
-import javax.security.auth.login.Configuration;
+import model.Purchase;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -15,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.nio.file.StandardOpenOption.*;
 
@@ -24,6 +24,11 @@ public class DraftDAOpurchases implements DAOPurchases{
     @Override
     public Purchase get(int id) {
         return null;
+    }
+
+    public List<Purchase> getByItem(int id){
+        List<Purchase> listPurchases = getAll().stream().filter(purchase -> purchase.getIditem() == id).collect(Collectors.toList());
+        return listPurchases;
     }
 
     @Override

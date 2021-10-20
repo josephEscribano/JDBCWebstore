@@ -10,11 +10,8 @@ import java.util.List;
 
 import dao.DAOCustomers;
 import dao.DarftDAOCustomers;
-import dao.DraftDAOItems;
 import javafx.scene.control.Alert;
 import model.Customer;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  *
@@ -42,7 +39,7 @@ public class CustomersServices {
 
 
 
-    public Customer addCustomer(int customerId, String name, String phone, String address)  {
+    public void addCustomer(int customerId, String name, String phone, String address)  {
         Customer custo = new Customer(customerId,name,phone,address);
         DAOCustomers dc = new DarftDAOCustomers();
         if (dc.get(customerId) == null){
@@ -51,8 +48,6 @@ public class CustomersServices {
             alert.setContentText("The id already exist");
             alert.showAndWait();
         }
-
-        return custo;
 
     }
 

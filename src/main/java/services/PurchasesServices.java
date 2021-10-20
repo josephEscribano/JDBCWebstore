@@ -36,9 +36,8 @@ public class PurchasesServices {
         return purch;
     }
     public List<Purchase> getPurchasesByItemId(int id) {
-        DAOPurchases dp = new DraftDAOpurchases();
-        List<Purchase> purch =  dp.getAll().stream().filter(purchase -> purchase.getIditem() == id).collect(Collectors.toList());
-        return purch;
+        DraftDAOpurchases dp = new DraftDAOpurchases();
+        return dp.getByItem(id);
     }
 
     public void deletePurchase(Purchase purchase) {
